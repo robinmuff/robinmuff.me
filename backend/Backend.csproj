@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="robocopy.exe static/ bin/Debug/net6.0/static /e" />
+    <Exec Command="@RD /S /Q bin/Debug/net6.0/static&#xD;&#xA;robocopy.exe ../frontend bin/Debug/net6.0/static /e&#xD;&#xA;exit 0" />
   </Target>
 
 </Project>

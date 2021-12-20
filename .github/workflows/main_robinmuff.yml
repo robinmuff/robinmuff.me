@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://backend20211220220704.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_3124b0f42ac34f4bbc6e2aa5b44a215e }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_d8820882e5f34c89b3ef8d196fcb53b0 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_93673fa1884b4d11acb171de4087bf21 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_91de78de453e4fd2920564d655d73123 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: backend20211220220704.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_3124b0f42ac34f4bbc6e2aa5b44a215e }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}
+        tags: backend20211220220704.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_93673fa1884b4d11acb171de4087bf21 }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'robinmuff'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_059d3faabb7b49089fd88b2873a1a28d }}
-        images: 'backend20211220220704.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_3124b0f42ac34f4bbc6e2aa5b44a215e }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_05430549ce5b462596c42f4827ede45b }}
+        images: 'backend20211220220704.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_93673fa1884b4d11acb171de4087bf21 }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}'

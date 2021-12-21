@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: robinmuff.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_667ab19da9b2409bb1b20ed36a3d2fe4 }}/nginx:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./backend/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest

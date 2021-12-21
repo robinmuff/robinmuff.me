@@ -2,7 +2,8 @@ using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 var executionPath = Environment.CommandLine.Replace('\\', '/').Remove(Environment.CommandLine.Replace('\\', '/').LastIndexOf('/'));
-var staticFilePath = "static";
+var staticFilePath = "static/www";
+var closedFilePath = "static";
 
 var app = builder.Build();
 
@@ -43,7 +44,7 @@ app.MapGet("/mydescription", async (HttpContext httpContext) =>
 
 app.MapGet("/mylinks", async (HttpContext httpContext) =>
 {
-    await httpContext.Response.SendFileAsync(staticFilePath + "/links.json");
+    await httpContext.Response.SendFileAsync(closedFilePath + "/links.json");
 });
 
 app.Run();

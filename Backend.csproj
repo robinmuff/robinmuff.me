@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="@RD /S /Q bin/Debug/net6.0/static&#xD;&#xA;robocopy.exe ../frontend bin/Debug/net6.0/static /e&#xD;&#xA;exit 0" />
+    <Exec Command="robocopy.exe static/ bin/Debug/net6.0/static /e&#xD;&#xA;robocopy.exe static/ bin/Release/net6.0/static /e&#xD;&#xA;exit 0" />
   </Target>
 
 </Project>

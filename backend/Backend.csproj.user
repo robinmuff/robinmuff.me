@@ -2,5 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>Docker</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\robin\source\repos\robinmuff\robinmuff.me\Backend\Properties\PublishProfiles\Backend20211221132013.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

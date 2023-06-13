@@ -1,50 +1,87 @@
 using Microsoft.Extensions.FileProviders;
+using Newtonsoft.Json;
 
-var builder = WebApplication.CreateBuilder(args);
-var executionPath = Environment.CommandLine.Replace('\\', '/').Remove(Environment.CommandLine.Replace('\\', '/').LastIndexOf('/'));
-var staticFilePath = "static/www";
-var closedFilePath = "static";
+// Webapp builder
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+WebApplication? app = builder.Build();
 
-var app = builder.Build();
+// All paths required for the webapp
+string executionPath = Directory.GetCurrentDirectory();
+const string staticFolder = "static";
+const string staticGlobalFolder = staticFolder + "/www";
 
+// Read infos.json
+var json = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(staticFolder + "/infos.json"))!;
+
+// Configure Static Files
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(executionPath + "/" + staticFilePath),
+    FileProvider = new PhysicalFileProvider(executionPath + "/" + staticGlobalFolder),
     RequestPath = ""
 });
 
-app.MapGet("/", async (HttpContext httpContext) => { await httpContext.Response.SendFileAsync(executionPath + "/" + staticFilePath + "/index.html"); });
-
+// Configure the Middleware
 app.Use(async (httpContext, next) =>
 {
     await next();
-    if (httpContext.Response.StatusCode == 404)
+
+    if (httpContext.Response.StatusCode != 404) return;
+
+    string path = staticGlobalFolder + httpContext.Request.Path.Value + ".html";
+    if (File.Exists(path))
     {
-        if (File.Exists(staticFilePath + httpContext.Request.Path.Value + ".html"))
-        {
-            await httpContext.Response.SendFileAsync(staticFilePath + httpContext.Request.Path.Value + ".html");
-        }
-        else
-        {
-            // Error HTML
-            httpContext.Response.Redirect("/");
-        }
+        await httpContext.Response.SendFileAsync(path);
+        return;
     }
+
+    // Redirect to start page if 404
+    httpContext.Response.Redirect("/");
 });
 
-app.MapGet("/myname", async (HttpContext httpContext) =>
-{
-    await httpContext.Response.WriteAsync("Robin Muff");
-});
-
-app.MapGet("/mydescription", async (HttpContext httpContext) =>
-{
-    await httpContext.Response.WriteAsJsonAsync(new List<string>() { "Apprentice Computer Scientist", "Programming", "Never stop trying your best" });
-});
-
-app.MapGet("/mylinks", async (HttpContext httpContext) =>
-{
-    await httpContext.Response.SendFileAsync(closedFilePath + "/links.json");
-});
+// Map the routes
+app.MapGet("/", async (HttpContext httpContext) => await returnStartPage(httpContext));
+app.MapGet("/myname", async (HttpContext httpContext) => await writeResponse(httpContext, getName()));
+app.MapGet("/mydescription", async (HttpContext httpContext) => await writeResponseAsJson(httpContext, getDescription()));
+app.MapGet("/mylinks", async (HttpContext httpContext) => await writeResponse(httpContext, getLinks()));
 
 app.Run();
+
+// Functions for the routes
+async Task returnStartPage(HttpContext httpContext)
+{
+    await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/index.html");
+}
+async Task writeResponse(HttpContext httpContext, string response) 
+{
+    await httpContext.Response.WriteAsync(response);
+}
+async Task writeResponseAsJson(HttpContext httpContext, List<string> response) 
+{
+    await httpContext.Response.WriteAsJsonAsync(response);
+}
+
+// Functions for the infos.json
+string getName() 
+{
+    if (json == null) return "";
+
+    return json.Name;
+}
+List<string> getDescription() 
+{
+    if (json == null) return new List<string>();
+
+    List<string> description = new List<string>();
+
+    for (int i = 0; i < json.Description.Count; i++) 
+    {
+        description.Add(json.Description[i].Value);
+    }
+    return description;
+}
+string getLinks() 
+{
+    if (json == null) return "";
+
+    return JsonConvert.SerializeObject(json.Links);
+}

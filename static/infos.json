@@ -1,0 +1,25 @@
+{
+  "Name": "Robin Muff",
+  "Description": [
+    "Apprentice Computer Scientist",
+    "Programming",
+    "Never stop trying your best"
+  ],
+  "Links": [
+    {
+      "titel": "Github",
+      "link": "https://github.com/robinmuff",
+      "cssClass": "icon brands fa-github"
+    },
+    {
+      "titel": "LinkedIn",
+      "link": "https://www.linkedin.com/in/robin-muff/",
+      "cssClass": "fab fa-linkedin"
+    },
+    {
+      "titel": "Email",
+      "link": "mailto:robin.muff@bluewin.ch",
+      "cssClass": "icon solid fa-envelope"
+    }
+  ]
+}

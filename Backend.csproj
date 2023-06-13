@@ -13,9 +13,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="robocopy.exe static/ bin/Debug/net6.0/static /e&#xD;&#xA;robocopy.exe static/ bin/Release/net6.0/static /e&#xD;&#xA;exit 0" />
-  </Target>
-
 </Project>

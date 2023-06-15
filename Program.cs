@@ -8,23 +8,11 @@ WebApplication? app = builder.Build();
 // All paths required for the webapp
 string executionPath = Directory.GetCurrentDirectory();
 const string staticFolder = "static";
-const string staticSecureFolder = staticFolder + "/secure";
 const string staticGlobalFolder = staticFolder + "/www";
-
-// All API Keys
-const string API_KEY_NAME = "X-API-Key";
-string API_KEY_VALUE = File.ReadAllText(staticSecureFolder + "/api.key");
 
 // Read infos.json
 var json = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(staticFolder + "/infos.json"))!;
 
-// Configure Static Files with Key
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(executionPath + "/" + staticSecureFolder),
-    RequestPath = "/secure",
-    OnPrepareResponse = ctx => checkForApiKey(ctx.Context)
-});
 // Configure Static Files
 app.UseStaticFiles(new StaticFileOptions
 {
@@ -97,45 +85,3 @@ string getLinks()
 
     return JsonConvert.SerializeObject(json.Links);
 }
-
-// API Key Validator
-void checkForApiKey(HttpContext ctx)
-{
-    if (isApiKeyValid(ctx))
-    {
-        returnUnauthorized(ctx);
-        //returnNotfound(ctx);
-    }
-}
-bool isApiKeyValid(HttpContext ctx)
-{
-    return !(isHeaderApiKeyValid(ctx) || isParamApiKeyValid(ctx));
-}
-bool isHeaderApiKeyValid(HttpContext ctx)
-{
-    var apiKey = ctx.Request.Headers.ToList().Find(item => item.Key == API_KEY_NAME);
-
-    if (apiKey.Key == null) return false;
-    return apiKey.Value == API_KEY_VALUE;
-}
-bool isParamApiKeyValid(HttpContext ctx)
-{
-    string? key = ctx.Request.Query[API_KEY_NAME];
-
-    if (key == null) return false;
-    return key == API_KEY_VALUE;
-}
-void returnUnauthorized(HttpContext ctx)
-{
-    ctx.Response.StatusCode = 401;
-    ctx.Response.ContentLength = 0;
-    ctx.Response.Body = Stream.Null;
-}
-/*
-void returnNotfound(HttpContext ctx)
-{
-    ctx.Response.StatusCode = 404;
-    ctx.Response.ContentLength = 0;
-    ctx.Response.Body = Stream.Null;
-}
-*/

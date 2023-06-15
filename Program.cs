@@ -40,9 +40,10 @@ app.Use(async (httpContext, next) =>
 
 // Map the routes
 app.MapGet("/", async (HttpContext httpContext) => await returnStartPage(httpContext));
-app.MapGet("/myname", async (HttpContext httpContext) => await writeResponse(httpContext, getName()));
-app.MapGet("/mydescription", async (HttpContext httpContext) => await writeResponseAsJson(httpContext, getDescription()));
-app.MapGet("/mylinks", async (HttpContext httpContext) => await writeResponse(httpContext, getLinks()));
+app.MapGet("/aboutme/name", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Name")));
+app.MapGet("/aboutme/description", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Description")));
+app.MapGet("/aboutme/socials", async (HttpContext httpContext) => await writeResponse(httpContext, getSocials()));
+app.MapGet("/aboutme/home-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Home-Title")));
 
 app.Run();
 
@@ -55,33 +56,17 @@ async Task writeResponse(HttpContext httpContext, string response)
 {
     await httpContext.Response.WriteAsync(response);
 }
-async Task writeResponseAsJson(HttpContext httpContext, List<string> response)
-{
-    await httpContext.Response.WriteAsJsonAsync(response);
-}
 
 // Functions for the infos.json
-string getName()
+string getInfoValueByKey(string key)
 {
     if (json == null) return "";
 
-    return json.Name;
+    return json[key];
 }
-List<string> getDescription()
-{
-    if (json == null) return new List<string>();
-
-    List<string> description = new List<string>();
-
-    for (int i = 0; i < json.Description.Count; i++)
-    {
-        description.Add(json.Description[i].Value);
-    }
-    return description;
-}
-string getLinks()
+string getSocials()
 {
     if (json == null) return "";
 
-    return JsonConvert.SerializeObject(json.Links);
+    return JsonConvert.SerializeObject(json.Socials);
 }

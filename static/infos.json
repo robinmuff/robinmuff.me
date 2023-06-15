@@ -1,25 +1,20 @@
 {
   "Name": "Robin Muff",
-  "Description": [
-    "Apprentice Computer Scientist",
-    "Programming",
-    "Never stop trying your best"
-  ],
-  "Links": [
+  "Description": "c# focused | Frontend interested",
+  "Socials": [
     {
-      "titel": "Github",
-      "link": "https://github.com/robinmuff",
-      "cssClass": "icon brands fa-github"
+      "url": "https://github.com/robinmuff",
+      "classes": "fab fa-github",
+      "id": "profile-link"
     },
     {
-      "titel": "LinkedIn",
-      "link": "https://www.linkedin.com/in/robin-muff/",
-      "cssClass": "fab fa-linkedin"
+      "url": "https://www.linkedin.com/in/robin-muff/",
+      "classes": "fab fa-linkedin-in"
     },
     {
-      "titel": "Email",
-      "link": "mailto:robin.muff@bluewin.ch",
-      "cssClass": "icon solid fa-envelope"
+      "url": "mailto:robin.muff@bluewin.ch",
+      "classes": "fa-regular fa-envelope"
     }
-  ]
+  ],
+  "Home-Title": "Hello, I am Robin Muff"
 }

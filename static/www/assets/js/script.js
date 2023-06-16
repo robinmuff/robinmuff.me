@@ -3,6 +3,12 @@ let aboutme = [
     { "Name": "aboutme-description", "Value": "text" },
     { "Name": "aboutme-socials", "Value": "json", "HandleWith": writeSocials },
     { "Name": "aboutme-home-title", "Value": "text" },
+    { "Name": "aboutme-about-title", "Value": "text" },
+    { "Name": "aboutme-about-texts", "Value": "object", "HandleWith": writeAboutTexts},
+    { "Name": "aboutme-about-skills-title", "Value": "text" },
+    { "Name": "aboutme-about-skills", "Value": "object", "HandleWith": wirteSkills },
+    { "Name": "aboutme-about-languages-title", "Value": "text" },
+    { "Name": "aboutme-about-languages", "Value": "object", "HandleWith": writeLanguages },
 ];
 
 loadData();
@@ -14,11 +20,11 @@ async function loadData() {
 
         if (item.Value == "text")
             result = await getDataAsText(item.Name.replace("-", "/"));
+        if (item.Value == "object")
+            result = JSON.parse(await getDataAsText(item.Name.replace("-", "/")));
         if (item.Value == "json")
             result = await getDataAsJson(item.Name.replace("-", "/"));
         
-        console.log(item.Name.replace("-", "/"))
-        console.log(result)
         if (item.HandleWith)
             item.HandleWith(element, result);
         else
@@ -35,6 +41,42 @@ async function getDataAsText(url) {
 async function writeSocials(element, socials) {
     socials.forEach(item => {
         let html = '<a href="{url}" target="_blank" class="{classes}" id="{id}"></a>';
+
+        Object.getOwnPropertyNames(item).forEach(itemChild => {
+            html = html.replace("{" + itemChild + "}", item[itemChild]);
+        });
+
+        element.innerHTML += html;
+    });
+}
+async function writeAboutTexts(element, texts) {
+    texts.forEach(item => {
+        let html = '<p>{text}</p>';
+
+        html = html.replace("{text}", item);
+
+        element.innerHTML += html;
+    });
+}
+async function wirteSkills(element, skills) {
+    let skillCounter = 0;
+    skills.forEach(item => {
+        let html = '<span class="skill">{skill}</span>';
+
+        html = html.replace("{skill}", item);
+
+        element.innerHTML += html;
+        
+        skillCounter++;
+        if (skillCounter == 4) {
+            element.innerHTML += "<br>";
+            skillCounter = 0;
+        }
+    });
+}
+async function writeLanguages(element, languages) {
+    languages.forEach(item => {
+        let html = '<div class="language"><p>{Language}</p><span class="bar"><span style="width: {SkillLevelProcent}%;"></span></span></div>';
 
         Object.getOwnPropertyNames(item).forEach(itemChild => {
             html = html.replace("{" + itemChild + "}", item[itemChild]);

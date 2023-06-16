@@ -1,6 +1,6 @@
 {
   "Name": "Robin Muff",
-  "Description": "c# focused | Frontend interested",
+  "Description": "C# focused | Frontend interested",
   "Socials": [
     {
       "url": "https://github.com/robinmuff",
@@ -16,5 +16,28 @@
       "classes": "fa-regular fa-envelope"
     }
   ],
-  "Home-Title": "Hello, I am Robin Muff"
+  "Home-Title": "Hello, I am Robin Muff",
+  "About-Title": "About me",
+  "About-Texts": [
+    "I am a 19 year old software developer from Switzerland. I did a apprenticeship as a computer scientist and I am currently working as a software developer. During my apprenticeship I learned a lot about C#, git, JavaScript, HTML and CSS.",
+    "My goal is to step into frontend development and learn more about JavaScript, HTML and CSS for a better understanding of the web. Therefore I am currently learning to develope in Vue.js.",
+    "In my freetime I do a lot of computer related stuff. I like to play racing games to stay competitive, do some programming or just hang out with my friends. Additionally I like to do some sports, therefor I am a football referee."
+  ],
+  "About-Skills-Title": "Skills",
+  "About-Skills": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "C#",
+    "SQL",
+    "Git",
+    "API",
+    "Node.js",
+    "Markdown"
+  ],
+  "About-Languages-Title": "Languages",
+  "About-Languages": [
+    {"Language": "German", "SkillLevelProcent": "100"},
+    {"Language": "English", "SkillLevelProcent": "85"}
+  ]
 }

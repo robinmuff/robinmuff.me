@@ -9,6 +9,9 @@ let aboutme = [
     { "Name": "aboutme-about-skills", "Value": "object", "HandleWith": wirteSkills },
     { "Name": "aboutme-about-languages-title", "Value": "text" },
     { "Name": "aboutme-about-languages", "Value": "object", "HandleWith": writeLanguages },
+
+    { "Name": "aboutme-experience-title", "Value": "text" },
+    { "Name": "aboutme-experience", "Value": "object", "HandleWith": writeExperience },
 ];
 
 loadData();
@@ -77,6 +80,17 @@ async function wirteSkills(element, skills) {
 async function writeLanguages(element, languages) {
     languages.forEach(item => {
         let html = '<div class="language"><p>{Language}</p><span class="bar"><span style="width: {SkillLevelProcent}%;"></span></span></div>';
+
+        Object.getOwnPropertyNames(item).forEach(itemChild => {
+            html = html.replace("{" + itemChild + "}", item[itemChild]);
+        });
+
+        element.innerHTML += html;
+    });
+}
+async function writeExperience(element, experiences) {
+    experiences.forEach(item => {
+        let html = '<div class="timeline-item"><div class="timeline-date">{Timeframe}</div><div class="timeline-content"><h3>{Title}</h3><p>{Text}</p></div></div>';
 
         Object.getOwnPropertyNames(item).forEach(itemChild => {
             html = html.replace("{" + itemChild + "}", item[itemChild]);

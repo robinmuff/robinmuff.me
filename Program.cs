@@ -1,3 +1,4 @@
+using System.Net.Mail;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 
@@ -52,6 +53,8 @@ app.MapGet("/aboutme/about-skills", async (HttpContext httpContext) => await wri
 app.MapGet("/aboutme/about-languages-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Languages-Title")));
 app.MapGet("/aboutme/about-languages", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Languages")));
 
+app.MapGet("/aboutme/experience-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Experience-Title")));
+app.MapGet("/aboutme/experience", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Experience")));
 
 app.Run();
 
@@ -69,16 +72,6 @@ async Task writeResponse(HttpContext httpContext, string response)
 string getInfoValueByKey(string key)
 {
     if (json == null) return "";
-
-    /*
-    if (!json[key].HasValues) return json[key];
-
-    string result = "";
-    foreach (var item in json[key])
-    {
-        result += item + "||";
-    }
-    */
 
     return json[key].ToString();
 }

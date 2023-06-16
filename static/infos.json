@@ -39,5 +39,12 @@
   "About-Languages": [
     {"Language": "German", "SkillLevelProcent": "100"},
     {"Language": "English", "SkillLevelProcent": "85"}
+  ],
+
+  "Experience-Title": "Experience",
+  "Experience": [
+    {"Timeframe": "2022-now", "Title": "Process and Systems Manager", "Text": "Process and Systems Manager at Schindler Aufzüge AG. Responsible for the development and maintenance of the internal applications."},
+    {"Timeframe": "2018-2022", "Title": "Apprenticeship", "Text": "Apprenticeship as a Computer Scientist EFZ specializing in Application Development at Schindler Aufzüge AG"},
+    {"Timeframe": "2009-2018", "Title": "School", "Text": "Primary school in Eich, Secondary school in Sempach"}
   ]
 }

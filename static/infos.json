@@ -16,10 +16,13 @@
       "classes": "fa-regular fa-envelope"
     }
   ],
-  "Home-Title": "Hello, I am Robin Muff",
+  "DownloadCv": "Download CV",
+  "Home-Title": "Welcome",
+  "Home-Text": "Explore my page and get to know me as a software developer",
+
   "About-Title": "About me",
   "About-Texts": [
-    "I am a 19 year old software developer from Switzerland. I did a apprenticeship as a computer scientist and I am currently working as a software developer. During my apprenticeship I learned a lot about C#, git, JavaScript, HTML and CSS.",
+    "I am a [[age]] year old software developer from Switzerland. I did a apprenticeship as a computer scientist and I am currently working as a software developer. During my apprenticeship I learned a lot about C#, git, JavaScript, HTML and CSS.",
     "My goal is to step into frontend development and learn more about JavaScript, HTML and CSS for a better understanding of the web. Therefore I am currently learning to develope in Vue.js.",
     "In my freetime I do a lot of computer related stuff. I like to play racing games to stay competitive, do some programming or just hang out with my friends. Additionally I like to do some sports, therefor I am a football referee."
   ],
@@ -40,6 +43,27 @@
     {"Language": "German", "SkillLevelProcent": "100"},
     {"Language": "English", "SkillLevelProcent": "85"}
   ],
+
+  "Projects-Title": "Projects",
+  "Projects": [
+    {
+      "Title": "ToDo-Webapp", 
+      "Text": "A C# based sime webapp for managing your tasks. There are two diffrent ways to manage the tasks, both use a inmemory database. To use it, you need to have something like Postman because there is no UI."
+    },
+    {
+      "Title": "CRUD-Operations", 
+      "Text": "A nuget.org package for CRUD-Operations. It is a simple package for CRUD-Operations. The C# project manages a json file and gives you the ability to create, read, update and delete data."
+    },
+    {
+      "Title": "robinmuff.me", 
+      "Text": "This website is a simple portfolio website. It is a static website with a little bit of JavaScript. Additionally the data is based of the webserver and loadid via JavaScript."
+    },
+    {
+      "Title": "robinmuff-school", 
+      "Text": "On this page you can find all my school projects. Its a archive for every project I did in school."
+    }
+  ],
+  "Projects-More": "see more...",
 
   "Experience-Title": "Experience",
   "Experience": [

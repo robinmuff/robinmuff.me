@@ -1,14 +1,24 @@
 let aboutme = [
+    { "Name": "aboutme-document-title", "Value": "text", "HandleWithOriginalData": writeDocumentData },
+
     { "Name": "aboutme-name", "Value": "text" },
     { "Name": "aboutme-description", "Value": "text" },
     { "Name": "aboutme-socials", "Value": "json", "HandleWith": writeSocials },
+    { "Name": "aboutme-downloadcv", "Value": "text" },
+    
     { "Name": "aboutme-home-title", "Value": "text" },
+    { "Name": "aboutme-home-text", "Value": "text" },
+
     { "Name": "aboutme-about-title", "Value": "text" },
     { "Name": "aboutme-about-texts", "Value": "object", "HandleWith": writeAboutTexts},
     { "Name": "aboutme-about-skills-title", "Value": "text" },
     { "Name": "aboutme-about-skills", "Value": "object", "HandleWith": wirteSkills },
     { "Name": "aboutme-about-languages-title", "Value": "text" },
     { "Name": "aboutme-about-languages", "Value": "object", "HandleWith": writeLanguages },
+
+    { "Name": "aboutme-projects-title", "Value": "text" },
+    { "Name": "aboutme-projects", "Value": "json", "HandleWith": writeProjects },
+    { "Name": "aboutme-projects-more", "Value": "text" },
 
     { "Name": "aboutme-experience-title", "Value": "text" },
     { "Name": "aboutme-experience", "Value": "object", "HandleWith": writeExperience },
@@ -28,7 +38,9 @@ async function loadData() {
         if (item.Value == "json")
             result = await getDataAsJson(item.Name.replace("-", "/"));
         
-        if (item.HandleWith)
+        if (item.HandleWithOriginalData)
+            item.HandleWithOriginalData(item.Name, result);
+        else if (item.HandleWith)
             item.HandleWith(element, result);
         else
             element.innerText = result;
@@ -41,6 +53,12 @@ async function getDataAsText(url) {
     return await (await fetch(url)).text();
 }
 
+async function writeDocumentData(name, data) {
+    // Extract last part for element "aboutme-document-title" => "title"
+    let element = name.split("-").slice(-1);
+
+    document[element] = data;
+}
 async function writeSocials(element, socials) {
     socials.forEach(item => {
         let html = '<a href="{url}" target="_blank" class="{classes}" id="{id}"></a>';
@@ -94,6 +112,17 @@ async function writeExperience(element, experiences) {
 
         Object.getOwnPropertyNames(item).forEach(itemChild => {
             html = html.replace("{" + itemChild + "}", item[itemChild]);
+        });
+
+        element.innerHTML += html;
+    });
+}
+async function writeProjects(element, projects) {
+    projects.forEach(item => {
+        let html = '<div class="project-tile"><img src="/assets/image/aboutme-project-{Title}.png" alt="" /><div class="overlay"><div class="project-description"><h3>{Title}</h3><p>{Text}</p></div></div></div>';
+
+        Object.getOwnPropertyNames(item).forEach(itemChild => {
+            html = html.replaceAll("{" + itemChild + "}", item[itemChild]);
         });
 
         element.innerHTML += html;

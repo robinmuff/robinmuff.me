@@ -1,3 +1,4 @@
+using System.Net.Mail;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 
@@ -40,9 +41,29 @@ app.Use(async (httpContext, next) =>
 
 // Map the routes
 app.MapGet("/", async (HttpContext httpContext) => await returnStartPage(httpContext));
-app.MapGet("/myname", async (HttpContext httpContext) => await writeResponse(httpContext, getName()));
-app.MapGet("/mydescription", async (HttpContext httpContext) => await writeResponseAsJson(httpContext, getDescription()));
-app.MapGet("/mylinks", async (HttpContext httpContext) => await writeResponse(httpContext, getLinks()));
+
+app.MapGet("/aboutme/document-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Name")));
+app.MapGet("/aboutme/name", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Name")));
+app.MapGet("/aboutme/description", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Description")));
+app.MapGet("/aboutme/socials", async (HttpContext httpContext) => await writeResponse(httpContext, getSocials()));
+app.MapGet("/aboutme/downloadcv", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("DownloadCv")));
+
+app.MapGet("/aboutme/home-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Home-Title")));
+app.MapGet("/aboutme/home-text", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Home-Text")));
+
+app.MapGet("/aboutme/about-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Title")));
+app.MapGet("/aboutme/about-texts", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Texts")));
+app.MapGet("/aboutme/about-skills-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Skills-Title")));
+app.MapGet("/aboutme/about-skills", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Skills")));
+app.MapGet("/aboutme/about-languages-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Languages-Title")));
+app.MapGet("/aboutme/about-languages", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Languages")));
+
+app.MapGet("/aboutme/projects-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Projects-Title")));
+app.MapGet("/aboutme/projects", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Projects")));
+app.MapGet("/aboutme/projects-more", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Projects-More")));
+
+app.MapGet("/aboutme/experience-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Experience-Title")));
+app.MapGet("/aboutme/experience", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Experience")));
 
 app.Run();
 
@@ -51,37 +72,50 @@ async Task returnStartPage(HttpContext httpContext)
 {
     await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/index.html");
 }
-async Task writeResponse(HttpContext httpContext, string response) 
+async Task writeResponse(HttpContext httpContext, string response)
 {
     await httpContext.Response.WriteAsync(response);
 }
-async Task writeResponseAsJson(HttpContext httpContext, List<string> response) 
-{
-    await httpContext.Response.WriteAsJsonAsync(response);
-}
 
 // Functions for the infos.json
-string getName() 
+string getInfoValueByKey(string key)
 {
     if (json == null) return "";
 
-    return json.Name;
-}
-List<string> getDescription() 
-{
-    if (json == null) return new List<string>();
+    string value = json[key].ToString();
 
-    List<string> description = new List<string>();
-
-    for (int i = 0; i < json.Description.Count; i++) 
+    // Get text from value between { and }
+    if (value.Contains("[[") && value.Contains("]]"))
     {
-        description.Add(json.Description[i].Value);
+        int startIndex = value.IndexOf("[[") + 1;
+        int endIndex = value.IndexOf("]]");
+        string variable = value.Substring(startIndex, endIndex - startIndex);
+
+        value = value.Replace("[[" + variable + "]]", getVariableData(variable));
     }
-    return description;
+
+    return value;
 }
-string getLinks() 
+string getSocials()
 {
     if (json == null) return "";
 
-    return JsonConvert.SerializeObject(json.Links);
+    return JsonConvert.SerializeObject(json.Socials);
+}
+
+// Functions for changing data
+string getVariableData(string key)
+{
+    if (key == "age") return getAge();
+
+    return "";
+}
+string getAge() 
+{
+    DateTime today = DateTime.Today;
+    DateTime birthdate = new DateTime(2003, 09, 26);
+    int age = today.Year - birthdate.Year;
+
+    if (birthdate.Date > today.AddYears(-age)) age--;
+    return age.ToString();
 }

@@ -1,46 +1,117 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Robin Muff</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
-  </head>
-  <body class="is-preload">
-    <div id="wrapper">
-      <div id="bg"></div>
-      <div id="overlay"></div>
-      <div id="main">
-        <!-- Header -->
-        <header id="header">
-          <h1 id="name"></h1>
-          <p id="description">
-            Apprentice Computer Scientist &nbsp;&bull;&nbsp; Programming &nbsp;&bull;&nbsp; Never stop trying your best
-          </p>
-          <nav>
-            <ul id="contacts">
-            </ul>
-          </nav>
-        </header>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/css/fontawesome/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+  <nav id="navbar" class="navbar"><a href="#"></a></nav>
+
+  <div class="container">
+    <!--=============== NAVIGATION MENU ===============-->
+
+    <div class="menu">
+      <a href="#welcome-section" class="menu-icon fas fa-home"></a>
+      <a href="#about" class="menu-icon fas fa-user"></a>
+      <a href="#projects" class="menu-icon fas fa-code"></a>
+      <a href="#experience" class="menu-icon fas fa-briefcase"></a>
+      <a href="#contact" class="menu-icon fas fa-envelope"></a>
+    </div>
+
+    <!--=============== MAIN "WINDOW" ===============-->
+
+    <div class="portfolio">
+      <!--=============== HEADER SECTION ===============-->
+
+      <section class="header">
+        <img class="header-img"
+          src="assets/image/Me.jpg"
+          alt="" />
+        <h1 class="aboutme-name"></h1>
+        <h2 class="aboutme-description"></h2>
+        <div class="socials aboutme-socials"></div>
+        <a href="assets/pdf/cv.pdf" class="cta aboutme-downloadcv" download></a>
+      </section>
+
+      <!--=============== CONTENT SECTION ===============-->
+
+      <div class="content">
+        <!--=============== HOME ===============-->
+
+        <section class="content-card home" id="welcome-section">
+          <h1 class="aboutme-home-title"></h1>
+          <h3 class="aboutme-home-text"></h3>
+        </section>
+
+        <!--=============== ABOUT ME ===============-->
+
+        <section class="content-card about" id="about">
+          <h1 class="aboutme-about-title"></h1>
+          <div class="about-item about-me aboutme-about-texts"></div>
+          <div class="col-2">
+            <div class="about-item skills aboutme-about-skills">
+              <h1 class="aboutme-about-skills-title"></h1>
+            </div>
+
+            <div class="about-item languages aboutme-about-languages">
+              <h1 class="aboutme-about-languages-title"></h1>
+            </div>
+          </div>
+        </section>
+
+        <!--=============== PROJECTS ===============-->
+
+        <section class="content-card projects" id="projects">
+          <h1 class="aboutme-projects-title">Projects</h1>
+          <div class="col-2 project-list aboutme-projects"></div>
+          <a class="aboutme-projects-more" href="https://github.com/robinmuff"></a>
+        </section>
+
+        <!--=============== EXPERIENCE ===============-->
+
+        <section class="content-card experience" id="experience">
+          <h1 class="aboutme-experience-title"></h1>
+          <div class="timeline">
+            <div class="timeline-items aboutme-experience"></div>
+          </div>
+        </section>
+
+        <!--=============== CONTACT ===============-->
+
+        <section class="content-card contact" id="contact">
+          <h1>Contact</h1>
+          <form class="form" id="form" action="https://getform.io/f/c6a6c15c-044f-496c-95f9-9456c0a2647f" method="post">
+            <div class="input-box">
+              <input type="text" class="text-input" name="name" placeholder="Name" />
+            </div>
+            <div class="input-box">
+              <input type="email" class="text-input" name="email" id="email" placeholder="Email" />
+            </div>
+            <div class="input-box">
+              <input type="subject" class="text-input" name="subject" id="subject" placeholder="Subject" />
+            </div>
+            <div class="input-box">
+              <textarea name="text" class="message" placeholder="Message..."></textarea>
+            </div>
+            <div class="input-box">
+              <input type="submit" class="submit-btn" id="submit" value="Submit" />
+            </div>
+          </form>
+        </section>
       </div>
     </div>
-    <script>
-      window.onload = function () {
-        document.body.classList.remove("is-preload");
-      };
-      window.ontouchmove = function () {
-        return false;
-      };
-      window.onorientationchange = function () {
-        document.body.scrollTop = 0;
-      };
-    </script>
-    <script src="assets/js/loader.js"></script>
-  </body>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+
 </html>

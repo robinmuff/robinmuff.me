@@ -43,7 +43,10 @@ app.MapGet("/", async (HttpContext httpContext) => await returnStartPage(httpCon
 
 app.MapGet("/api/structure", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Structure")));
 
+app.MapGet("/api/favicon", async (HttpContext httpContext) => await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/assets/image/project-robinmuff.me.png"));
+
 app.MapGet("/api/document-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Name")));
+
 app.MapGet("/api/name", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Name")));
 app.MapGet("/api/description", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Description")));
 app.MapGet("/api/socials", async (HttpContext httpContext) => await writeResponse(httpContext, getSocials()));

@@ -1,4 +1,3 @@
-using System.Net.Mail;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 
@@ -87,7 +86,7 @@ string getInfoValueByKey(string key)
     // Get text from value between { and }
     if (value.Contains("[[") && value.Contains("]]"))
     {
-        int startIndex = value.IndexOf("[[") + 1;
+        int startIndex = value.IndexOf("[[") + 2;
         int endIndex = value.IndexOf("]]");
         string variable = value.Substring(startIndex, endIndex - startIndex);
 

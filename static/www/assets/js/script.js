@@ -80,19 +80,12 @@ async function writeAboutTexts(element, texts) {
     });
 }
 async function wirteSkills(element, skills) {
-    let skillCounter = 0;
     skills.forEach(item => {
         let html = '<span class="skill">{skill}</span>';
 
         html = html.replace("{skill}", item);
 
         element.innerHTML += html;
-        
-        skillCounter++;
-        if (skillCounter == 4) {
-            element.innerHTML += "<br>";
-            skillCounter = 0;
-        }
     });
 }
 async function writeLanguages(element, languages) {
@@ -119,10 +112,11 @@ async function writeExperience(element, experiences) {
 }
 async function writeProjects(element, projects) {
     projects.forEach(item => {
-        let html = '<div class="project-tile"><img src="/assets/image/aboutme-project-{Title}.png" alt="" /><div class="overlay"><div class="project-description"><h3>{Title}</h3><p>{Text}</p></div></div></div>';
+        let html = '<div class="project-tile"><img src="/assets/image/aboutme-project-{Title|lower}.png" alt="" /><div class="overlay"><div class="project-description"><h3>{Title}</h3><p>{Text}</p></div></div></div>';
 
         Object.getOwnPropertyNames(item).forEach(itemChild => {
             html = html.replaceAll("{" + itemChild + "}", item[itemChild]);
+            html = html.replaceAll("{" + itemChild + "|lower}", item[itemChild].toLowerCase());
         });
 
         element.innerHTML += html;

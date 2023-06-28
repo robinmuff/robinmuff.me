@@ -1,4 +1,7 @@
 ## Installation
-1. Download latest fonteawesome and put it into static/www/assets/css/fontawesome
-2. Console: dotnet restore
-3. Console: dotnet run
+1. Console: dotnet restore
+2. Console: dotnet run
+
+## Release
+1. dotnet publish --os linux --arch x64 -c Release -p:PublishProfile=DefaultContainer
+2. Docker Push Image

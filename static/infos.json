@@ -1,4 +1,32 @@
 {
+  "Structure": [
+    { "Name": "document-title", "Value": "text" },
+
+    { "Name": "name", "Value": "text" },
+    { "Name": "description", "Value": "text" },
+    { "Name": "socials", "Value": "json" },
+    { "Name": "downloadcv", "Value": "text" },
+    
+    { "Name": "home-title", "Value": "text" },
+    { "Name": "home-text", "Value": "text" },
+
+    { "Name": "about-title", "Value": "text" },
+    { "Name": "about-texts", "Value": "object" },
+    { "Name": "about-skills-title", "Value": "text" },
+    { "Name": "about-skills", "Value": "object" },
+    { "Name": "about-languages-title", "Value": "text" },
+    { "Name": "about-languages", "Value": "object" },
+
+    { "Name": "projects-title", "Value": "text" },
+    { "Name": "projects", "Value": "json" },
+    { "Name": "projects-more", "Value": "text" },
+
+    { "Name": "contact-title", "Value": "text" },
+
+    { "Name": "experience-title", "Value": "text" },
+    { "Name": "experience", "Value": "object" }
+  ],
+
   "Name": "Robin Muff",
   "Description": "C# focused | Frontend interested",
   "Socials": [
@@ -65,10 +93,18 @@
   ],
   "Projects-More": "see more...",
 
+  "Contact-Title": "Contact",
+
   "Experience-Title": "Experience",
   "Experience": [
     {"Timeframe": "2022-now", "Title": "Process and Systems Manager", "Text": "Process and Systems Manager at Schindler Aufzüge AG. Responsible for the development and maintenance of the internal applications."},
     {"Timeframe": "2018-2022", "Title": "Apprenticeship", "Text": "Apprenticeship as a Computer Scientist EFZ specializing in Application Development at Schindler Aufzüge AG"},
     {"Timeframe": "2009-2018", "Title": "School", "Text": "Primary school in Eich, Secondary school in Sempach"}
-  ]
+  ],
+  "Template-Socials": "<a href='{[url]}' target='_blank' class='{[classes]}' id='{id}'></a>",
+  "Template-About-Texts": "<p>{[_item_]}</p>",
+  "Template-About-Skills": "<span class='skill'>{[_item_]}</span>",
+  "Template-About-Languages": "<div class='language'><p>{[Language]}</p><span class='bar'><span style='width: {[SkillLevelProcent]}%;'></span></span></div>",
+  "Template-Projects": "<div class='project-tile'><img src='/assets/image/project-{[Title|lower]}.png' alt='' /><div class='overlay'><div class='project-description'><h3>{[Title]}</h3><p>{[Text]}</p></div></div></div>",
+  "Template-Experience": "<div class='timeline-item'><div class='timeline-date'>{[Timeframe]}</div><div class='timeline-content'><h3>{[Title]}</h3><p>{[Text]}</p></div></div>"
 }

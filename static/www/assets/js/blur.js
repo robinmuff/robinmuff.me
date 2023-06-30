@@ -9,6 +9,7 @@ function blurring() {
   load++;
   if (load > 99) {
     clearInterval(interval);
+    loadText.parentNode.removeChild(loadText);
   }
   loadText.innerText = `${load}%`;
   loadText.style.opacity = 1 - load / 100;

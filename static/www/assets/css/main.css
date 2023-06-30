@@ -12,6 +12,19 @@
   --border-radius: 30px;
 }
 
+.loading-text {
+  border-bottom: 2px solid white;
+  width: 200px;
+  text-align: center;
+  font-size: 10vw;
+  color: #fff;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /*=============== SCROLLBAR ===============*/
 
 ::-webkit-scrollbar {

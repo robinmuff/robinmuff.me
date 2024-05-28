@@ -102,7 +102,7 @@ string getInfoValueByKey(string key)
     {
         int startIndex = value.IndexOf("[[") + 2;
         int endIndex = value.IndexOf("]]");
-        string variable = value.Substring(startIndex, endIndex - startIndex);
+        string variable = value[startIndex..endIndex];
 
         value = value.Replace("[[" + variable + "]]", getVariableData(variable));
     }
@@ -126,7 +126,7 @@ string getVariableData(string key)
 string getAge() 
 {
     DateTime today = DateTime.Today;
-    DateTime birthdate = new DateTime(2003, 09, 26);
+    DateTime birthdate = new(2003, 09, 26);
     int age = today.Year - birthdate.Year;
 
     if (birthdate.Date > today.AddYears(-age)) age--;

@@ -19,11 +19,13 @@ async function loadData() {
         if (item.Value == "object") result = JSON.parse(await getDataAsText(item.Name));
         if (item.Value == "json") result = await getDataAsJson(item.Name);
 
+        console.log(result)
+
         writeData(item.Name, result);
     });
 }
 
-async function replaceOwnPropertyNames(template, item) {
+function replaceOwnPropertyNames(template, item) {
     Object.getOwnPropertyNames(item).forEach(itemChild => {
         let replacementMethods = [
             {"Text": "{[" + itemChild + "]}", "Replace": "item[itemChild]"},
@@ -56,11 +58,11 @@ async function writeData(name, data) {
         return;
     }
 
-    data.forEach(async item => {
-        let html = await getTemplate(name);
+    let html = await getTemplate(name);
 
-        html = await replaceOwnPropertyNames(html, item);
+    data.forEach(async item => {        
+        let currentHtml = replaceOwnPropertyNames(html, item);
 
-        getMyElementByName(name).innerHTML += html;
+        getMyElementByName(name).innerHTML += currentHtml;
     });
 }

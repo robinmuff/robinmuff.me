@@ -19,8 +19,6 @@ async function loadData() {
         if (item.Value == "object") result = JSON.parse(await getDataAsText(item.Name));
         if (item.Value == "json") result = await getDataAsJson(item.Name);
 
-        console.log(result)
-
         writeData(item.Name, result);
     });
 }

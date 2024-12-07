@@ -39,59 +39,59 @@ app.Use(async (httpContext, next) =>
 });
 
 // Map the routes
-app.MapGet("/", async (HttpContext httpContext) => await returnStartPage(httpContext));
+app.MapGet("/", async (HttpContext httpContext) => await ReturnStartPage(httpContext));
 
-app.MapGet("/api/structure", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Structure")));
+app.MapGet("/api/structure", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Structure")));
 
 app.MapGet("/api/favicon", async (HttpContext httpContext) => await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/assets/image/project-robinmuff.me.png"));
 
-app.MapGet("/api/document-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Name")));
+app.MapGet("/api/document-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Name")));
 
-app.MapGet("/api/name", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Name")));
-app.MapGet("/api/description", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Description")));
-app.MapGet("/api/socials", async (HttpContext httpContext) => await writeResponse(httpContext, getSocials()));
-app.MapGet("/api/downloadcv", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("DownloadCv")));
+app.MapGet("/api/name", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Name")));
+app.MapGet("/api/description", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Description")));
+app.MapGet("/api/socials", async (HttpContext httpContext) => await WriteResponse(httpContext, GetSocials()));
+app.MapGet("/api/downloadcv", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("DownloadCv")));
 
-app.MapGet("/api/home-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Home-Title")));
-app.MapGet("/api/home-text", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Home-Text")));
+app.MapGet("/api/home-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Home-Title")));
+app.MapGet("/api/home-text", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Home-Text")));
 
-app.MapGet("/api/about-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Title")));
-app.MapGet("/api/about-texts", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Texts")));
-app.MapGet("/api/about-skills-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Skills-Title")));
-app.MapGet("/api/about-skills", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Skills")));
-app.MapGet("/api/about-languages-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Languages-Title")));
-app.MapGet("/api/about-languages", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("About-Languages")));
+app.MapGet("/api/about-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("About-Title")));
+app.MapGet("/api/about-texts", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("About-Texts")));
+app.MapGet("/api/about-skills-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("About-Skills-Title")));
+app.MapGet("/api/about-skills", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("About-Skills")));
+app.MapGet("/api/about-languages-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("About-Languages-Title")));
+app.MapGet("/api/about-languages", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("About-Languages")));
 
-app.MapGet("/api/projects-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Projects-Title")));
-app.MapGet("/api/projects", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Projects")));
-app.MapGet("/api/projects-more", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Projects-More")));
+app.MapGet("/api/projects-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Projects-Title")));
+app.MapGet("/api/projects", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Projects")));
+app.MapGet("/api/projects-more", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Projects-More")));
 
-app.MapGet("/api/experience-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Experience-Title")));
-app.MapGet("/api/experience", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Experience")));
+app.MapGet("/api/experience-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Experience-Title")));
+app.MapGet("/api/experience", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Experience")));
 
-app.MapGet("/api/contact-title", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Contact-Title")));
+app.MapGet("/api/contact-title", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Contact-Title")));
 
-app.MapGet("/api/template-socials", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Template-Socials")));
-app.MapGet("/api/template-about-texts", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Template-About-Texts")));
-app.MapGet("/api/template-about-skills", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Template-About-Skills")));
-app.MapGet("/api/template-about-languages", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Template-About-Languages")));
-app.MapGet("/api/template-projects", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Template-Projects")));
-app.MapGet("/api/template-experience", async (HttpContext httpContext) => await writeResponse(httpContext, getInfoValueByKey("Template-Experience")));
+app.MapGet("/api/template-socials", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Template-Socials")));
+app.MapGet("/api/template-about-texts", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Template-About-Texts")));
+app.MapGet("/api/template-about-skills", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Template-About-Skills")));
+app.MapGet("/api/template-about-languages", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Template-About-Languages")));
+app.MapGet("/api/template-projects", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Template-Projects")));
+app.MapGet("/api/template-experience", async (HttpContext httpContext) => await WriteResponse(httpContext, GetInfoValueByKey("Template-Experience")));
 
 app.Run();
 
 // Functions for the routes
-async Task returnStartPage(HttpContext httpContext)
+async Task ReturnStartPage(HttpContext httpContext)
 {
     await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/index.html");
 }
-async Task writeResponse(HttpContext httpContext, string response)
+async Task WriteResponse(HttpContext httpContext, string response)
 {
     await httpContext.Response.WriteAsync(response);
 }
 
 // Functions for the infos.json
-string getInfoValueByKey(string key)
+string GetInfoValueByKey(string key)
 {
     if (json == null) return "";
 
@@ -100,34 +100,30 @@ string getInfoValueByKey(string key)
     // Get text from value between { and }
     if (value.Contains("[[") && value.Contains("]]"))
     {
-        int startIndex = value.IndexOf("[[") + 2;
-        int endIndex = value.IndexOf("]]");
+        int startIndex = value.IndexOf("[[", StringComparison.Ordinal) + 2;
+        int endIndex = value.IndexOf("]]", StringComparison.Ordinal);
         string variable = value[startIndex..endIndex];
 
-        value = value.Replace("[[" + variable + "]]", getVariableData(variable));
+        value = value.Replace("[[" + variable + "]]", GetVariableData(variable));
     }
 
     return value;
 }
-string getSocials()
+string GetSocials()
 {
-    if (json == null) return "";
-
-    return JsonConvert.SerializeObject(json.Socials);
+    return json == null ? "" : (string)JsonConvert.SerializeObject(json.Socials);
 }
 
 // Functions for changing data
-string getVariableData(string key)
+string GetVariableData(string key)
 {
-    if (key == "age") return getAge();
-
-    return "";
+    return key == "age" ? GetAge() : "";
 }
-string getAge() 
+string GetAge() 
 {
-    DateTime today = DateTime.Today;
-    DateTime birthdate = new(2003, 09, 26);
-    int age = today.Year - birthdate.Year;
+    var today = DateTime.Today;
+    var birthdate = new DateTime(2003, 09, 26);
+    var age = today.Year - birthdate.Year;
 
     if (birthdate.Date > today.AddYears(-age)) age--;
     return age.ToString();

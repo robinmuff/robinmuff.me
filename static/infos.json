@@ -5,7 +5,7 @@
     { "Name": "name", "Value": "text" },
     { "Name": "description", "Value": "text" },
     { "Name": "socials", "Value": "json" },
-    { "Name": "downloadcv", "Value": "text" },
+    { "Name": "download-cv", "Value": "text" },
     
     { "Name": "home-title", "Value": "text" },
     { "Name": "home-text", "Value": "text" },
@@ -27,6 +27,7 @@
     { "Name": "experience", "Value": "object" }
   ],
 
+  "Document-Title": "About Robin Muff",
   "Name": "Robin Muff",
   "Description": "C# focused | Frontend interested",
   "Socials": [
@@ -44,7 +45,7 @@
       "classes": "fa-regular fa-envelope"
     }
   ],
-  "DownloadCv": "Download CV",
+  "Download-Cv": "Download CV",
   "Home-Title": "Welcome",
   "Home-Text": "Explore my page and get to know me as a software developer",
 
@@ -97,9 +98,10 @@
 
   "Experience-Title": "Experience",
   "Experience": [
-    {"Timeframe": "2022-now", "Title": "Process and Systems Manager", "Text": "Process and Systems Manager at Schindler Aufzüge AG. Responsible for the development and maintenance of the internal applications."},
-    {"Timeframe": "2018-2022", "Title": "Apprenticeship", "Text": "Apprenticeship as a Computer Scientist EFZ specializing in Application Development at Schindler Aufzüge AG"},
-    {"Timeframe": "2009-2018", "Title": "School", "Text": "Primary school in Eich, Secondary school in Sempach"}
+    {"Timeframe": "Dez. 2024 - now", "Title": "Software Developer", "Text": "Software Developer at xappido AG. Developing software for customers of xappido AG."},
+    {"Timeframe": "Aug. 2022 - Nov. 2024", "Title": "Process and Systems Manager", "Text": "Process and Systems Manager at Schindler Aufzüge AG. Responsible for the development and maintenance of the internal applications."},
+    {"Timeframe": "Aug. 2018 - Jul. 2022", "Title": "Apprenticeship", "Text": "Apprenticeship as a Computer Scientist EFZ specializing in Application Development at Schindler Aufzüge AG"},
+    {"Timeframe": "Aug. 2009 - Jul. 2018", "Title": "School", "Text": "Primary school in Eich, Secondary school in Sempach"}
   ],
   "Template-Socials": "<a href='{[url]}' target='_blank' class='{[classes]}' id='{id}'></a>",
   "Template-About-Texts": "<p>{[_item_]}</p>",

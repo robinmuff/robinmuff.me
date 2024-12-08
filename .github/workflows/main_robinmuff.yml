@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.x'
-          include-prerelease: true
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
@@ -52,9 +51,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_D58B0D809EFC4F818EDE0A5466B6A0CE }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_024F69A745DA44B5A40056A65923BBBE }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_156D25EE240542308E935DD5E8EBF513 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_766644D8AE2F4C28BCAA2C62FA05F7C2 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2EF87AD172E44CC3B1DD9BCE0BDCD07B }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9A6F805813C84330A9DA7628346F9988 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp

@@ -12,7 +12,9 @@ const string staticFolder = "static";
 const string staticGlobalFolder = staticFolder + "/www";
 
 // Read infos.json
-var json = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(staticFolder + "/infos.json"))!;
+var jsonContent = File.ReadAllText(staticFolder + "/infos.json");
+var json = JsonConvert.DeserializeObject<dynamic>(jsonContent) ?? throw new Exception("Invalid JSON format or file not found.");
+
 
 // Configure Static Files
 app.UseStaticFiles(new StaticFileOptions
@@ -40,46 +42,27 @@ app.Use(async (httpContext, next) =>
 });
 
 // Map the routes
-app.MapGet("/", async (HttpContext httpContext) => await ReturnStartPage(httpContext));
+app.MapGet("/", async (HttpContext httpContext) => await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/index.html"));
 app.MapGet("/favicon", async (HttpContext httpContext) => await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/assets/image/project-robinmuff.me.png"));
-app.MapGet("/api/{item}", async (string item, HttpContext httpContext) =>
-{
-    await WriteResponse(httpContext, GetInfoValueByKey(item));
-});
+app.MapGet("/api/{item}", async (string item, HttpContext httpContext) => await httpContext.Response.WriteAsync(GetInfoValueByKey(item)));
 app.Run();
-
-// Functions for the routes
-async Task ReturnStartPage(HttpContext httpContext)
-{
-    await httpContext.Response.SendFileAsync(executionPath + "/" + staticGlobalFolder + "/index.html");
-}
-async Task WriteResponse(HttpContext httpContext, string response)
-{
-    await httpContext.Response.WriteAsync(response);
-}
+return;
 
 // Functions for the infos.json
 string GetInfoValueByKey(string key)
 {
-    if (json == null) return "";
+    if (json == null) return string.Empty;
 
-    key = Join('-', 
-        key.Split('-').Select(word =>
-            IsNullOrEmpty(word) ? word : char.ToUpper(word[0]) + word[1..]
-            ).ToArray());
+    key = string.Join('-', key.Split('-').Select(word => 
+        string.IsNullOrEmpty(word) ? word : char.ToUpper(word[0]) + word.Substring(1)));
+
+    if (json[key] == null) return string.Empty;
 
     string value = json[key].ToString();
-    
     if (!value.Contains("[[") || !value.Contains("]]")) return value;
-    
-    // Get text from value between { and }
-    var startIndex = value.IndexOf("[[", StringComparison.Ordinal) + 2;
-    var endIndex = value.IndexOf("]]", StringComparison.Ordinal);
-    var variable = value[startIndex..endIndex];
 
-    value = value.Replace("[[" + variable + "]]", GetVariableData(variable));
-
-    return value;
+    var variable = value.Substring(value.IndexOf("[[", StringComparison.Ordinal) + 2, value.IndexOf("]]", StringComparison.Ordinal) - value.IndexOf("[[", StringComparison.Ordinal) - 2);
+    return value.Replace($"[[{variable}]]", GetVariableData(variable));
 }
 
 // Functions for changing data

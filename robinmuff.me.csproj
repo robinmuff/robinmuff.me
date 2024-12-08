@@ -16,6 +16,10 @@
   <ItemGroup>
     <Files Include="static/**/*.*" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\serviceDependencies.json" />
+  </ItemGroup>
   <Target Name="CopyFiles" AfterTargets="Publish">
     <Copy SourceFiles="@(Files)" DestinationFolder="$(PublishDir)/static/%(RecursiveDir)" />
   </Target>

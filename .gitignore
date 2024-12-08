@@ -1,3 +1,5 @@
 ﻿**obj
 **bin
+**.vscode
+**.config
 .DS_STORE

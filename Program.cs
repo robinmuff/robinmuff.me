@@ -54,14 +54,16 @@ string GetInfoValueByKey(string key)
     if (json == null) return string.Empty;
 
     key = string.Join('-', key.Split('-').Select(word => 
-        string.IsNullOrEmpty(word) ? word : char.ToUpper(word[0]) + word.Substring(1)));
+        string.IsNullOrEmpty(word) ? word : char.ToUpper(word[0]) + word[1..]));
 
     if (json[key] == null) return string.Empty;
 
     string value = json[key].ToString();
     if (!value.Contains("[[") || !value.Contains("]]")) return value;
 
-    var variable = value.Substring(value.IndexOf("[[", StringComparison.Ordinal) + 2, value.IndexOf("]]", StringComparison.Ordinal) - value.IndexOf("[[", StringComparison.Ordinal) - 2);
+    var variable = value.Substring(
+        value.IndexOf("[[", StringComparison.Ordinal) + 2, 
+        value.IndexOf("]]", StringComparison.Ordinal) - value.IndexOf("[[", StringComparison.Ordinal) - 2);
     return value.Replace($"[[{variable}]]", GetVariableData(variable));
 }
 

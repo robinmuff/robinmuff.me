@@ -1,5 +1,2 @@
-﻿**obj
-**bin
-**.vscode
-**.config
-.DS_STORE
+.idea/
+.DS_Store

@@ -12,19 +12,6 @@
   --border-radius: 30px;
 }
 
-.loading-text {
-  border-bottom: 2px solid white;
-  width: 200px;
-  text-align: center;
-  font-size: 10vw;
-  color: #fff;
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 /*=============== SCROLLBAR ===============*/
 
 ::-webkit-scrollbar {
@@ -516,6 +503,7 @@ textarea {
   ::-webkit-scrollbar {
     display: none;
   }
+}
 
 @media screen and (max-width: 400px) {
   .content-card {
@@ -527,10 +515,6 @@ textarea {
   }
 }
 
-/* A little cheat to trick the freecodecamp certification test. It requires 
-the navbar to be on top of the viewport, but I've already done that in previous 
-projects and I think in this one it looks more interesting on the side.
-I hope the freecodecamp team won't be mad at me :) */
 #navbar {
   position: fixed;
   margin: 0;

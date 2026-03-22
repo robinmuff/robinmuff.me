@@ -176,6 +176,35 @@ h2 {
   transition-property: background-color, color;
 }
 
+/*=============== LANGUAGE TOGGLE ===============*/
+
+.lang-toggle {
+  margin: 10px 0;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.lang-option {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.2s linear;
+  transition-property: color;
+  text-decoration: none;
+}
+
+.lang-option:hover {
+  color: #fff;
+}
+
+.lang-option.active {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.lang-separator {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .header .cta {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.274);

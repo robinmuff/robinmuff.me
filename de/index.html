@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+
+  <link rel="shortcut icon" href="../assets/image/project-robinmuff.me.png">
+
+  <link rel="alternate" hreflang="en" href="https://robinmuff.me/" />
+  <link rel="alternate" hreflang="de" href="https://robinmuff.me/de" />
+  <link rel="alternate" hreflang="x-default" href="https://robinmuff.me/" />
+
+  <title>Über Robin Muff</title>
+</head>
+
+<body>
+  <nav id="navbar" class="navbar"><a href="#"></a></nav>
+
+  <div class="loading-text">0%</div>
+
+  <div class="container">
+    <!--=============== NAVIGATION MENU ===============-->
+
+    <div class="menu">
+      <a href="#welcome-section" class="menu-icon fas fa-home"></a>
+      <a href="#about" class="menu-icon fas fa-user"></a>
+      <a href="#projects" class="menu-icon fas fa-code"></a>
+      <a href="#experience" class="menu-icon fas fa-briefcase"></a>
+      <a href="#contact" class="menu-icon fas fa-envelope"></a>
+    </div>
+
+    <!--=============== MAIN "WINDOW" ===============-->
+
+    <div class="portfolio">
+      <!--=============== HEADER SECTION ===============-->
+
+      <section class="header">
+        <img class="header-img"
+          src="../assets/image/Me.jpg"
+          alt="" />
+        <h1 class="robinmuff-name">Robin Muff</h1>
+        <h2 class="robinmuff-description" data-i18n="header.description">Arbeite im Backend</h2>
+        <div class="socials robinmuff-socials">
+          <a href='https://github.com/robinmuff' target='_blank' class='fab fa-github'></a>
+          <a href='https://www.linkedin.com/in/robin-muff/' target='_blank' class='fab fa-linkedin-in'></a>
+          <a href='mailto:robin.muff@bluewin.ch' target='_blank' class='fa-regular fa-envelope'></a>
+        </div>
+        <div class="lang-toggle">
+          <a href="/" class="lang-option" data-lang="en">EN</a>
+          <span class="lang-separator"> / </span>
+          <a href="/de" class="lang-option active" data-lang="de">DE</a>
+        </div>
+        <a href="../assets/pdf/cv.pdf" class="cta robinmuff-download-cv" data-i18n="header.downloadCv" download>Lebenslauf herunterladen</a>
+      </section>
+
+      <!--=============== CONTENT SECTION ===============-->
+
+      <div class="content">
+        <!--=============== HOME ===============-->
+
+        <section class="content-card home" id="welcome-section">
+          <h1 class="robinmuff-home-title" data-i18n="home.title">Willkommen</h1>
+          <h3 class="robinmuff-home-text" data-i18n="home.text">Erkunde meine Seite und lerne mich als Softwareentwickler kennen</h3>
+        </section>
+
+        <!--=============== ABOUT ME ===============-->
+
+        <section class="content-card about" id="about">
+          <h1 class="robinmuff-about-title" data-i18n="about.title">Über mich</h1>
+          <div class="about-item about-me robinmuff-about-texts">
+            <p data-i18n="about.paragraph1">Ich bin ein 22-jähriger Softwareentwickler aus der Schweiz. Ich habe eine Lehre als Informatiker absolviert und arbeite derzeit als Softwareentwickler. Während meiner Lehre habe ich viel über C#, Git, JavaScript, HTML und CSS gelernt.</p>
+            <p data-i18n="about.paragraph2">Mein Ziel ist es, in die Frontend-Entwicklung einzusteigen und mehr über JavaScript, HTML und CSS zu lernen, um das Web besser zu verstehen. Deshalb lerne ich derzeit, in Vue.js zu entwickeln.</p>
+            <p data-i18n="about.paragraph3">In meiner Freizeit mache ich viel am Computer. Ich spiele gerne Rennspiele, um wettbewerbsfähig zu bleiben, programmiere oder verbringe einfach Zeit mit meinen Freunden. Zusätzlich treibe ich gerne Sport, deshalb bin ich Fussball-Schiedsrichter.</p>
+          </div>
+          <div class="col-2">
+            <div class="about-item skills robinmuff-about-skills">
+              <h1 class="robinmuff-about-skills-title" data-i18n="about.skillsTitle">Skills</h1>
+              <span class='skill'>HTML</span>
+              <span class='skill'>CSS</span>
+              <span class='skill'>JavaScript</span>
+              <span class='skill'>C#</span>
+              <span class='skill'>SQL</span>
+              <span class='skill'>Git</span>
+              <span class='skill'>API</span>
+              <span class='skill'>Markdown</span>
+            </div>
+
+            <div class="about-item languages robinmuff-about-languages">
+              <h1 class="robinmuff-about-languages-title" data-i18n="about.languagesTitle">Sprachen</h1>
+              <div class='language'><p data-i18n="about.german">Deutsch</p><span class='bar'><span style='width: 100%;'></span></span></div>
+              <div class='language'><p data-i18n="about.english">Englisch</p><span class='bar'><span style='width: 85%;'></span></span></div>
+            </div>
+          </div>
+        </section>
+
+        <!--=============== PROJECTS ===============-->
+
+        <section class="content-card projects" id="projects">
+          <h1 class="robinmuff-projects-title" data-i18n="projects.title">Projekte</h1>
+          <div class="col-2 project-list robinmuff-projects">
+            <div class='project-tile'><img src='../assets/image/project-todo-webapp.png' alt='' /><div class='overlay'><div class='project-description'><h3 data-i18n="projects.todo.title">ToDo-Webapp</h3><p data-i18n="projects.todo.description">Eine C#-basierte einfache Webapp zur Verwaltung deiner Aufgaben. Es gibt zwei verschiedene Möglichkeiten, die Aufgaben zu verwalten, beide verwenden eine In-Memory-Datenbank. Um sie zu nutzen, benötigst du etwas wie Postman, da es keine Benutzeroberfläche gibt.</p></div></div></div>
+            <div class='project-tile'><img src='../assets/image/project-crud-operations.png' alt='' /><div class='overlay'><div class='project-description'><h3 data-i18n="projects.crud.title">CRUD-Operations</h3><p data-i18n="projects.crud.description">Ein nuget.org-Paket für CRUD-Operationen. Es ist ein einfaches Paket für CRUD-Operationen. Das C#-Projekt verwaltet eine JSON-Datei und bietet die Möglichkeit, Daten zu erstellen, lesen, aktualisieren und löschen.</p></div></div></div>
+            <div class='project-tile'><img src='../assets/image/project-robinmuff.me.png' alt='' /><div class='overlay'><div class='project-description'><h3 data-i18n="projects.robinmuff.title">robinmuff.me</h3><p data-i18n="projects.robinmuff.description">Diese Website ist eine einfache Portfolio-Website. Es ist eine statische Website mit ein wenig JavaScript. Zusätzlich basieren die Daten auf dem Webserver und werden via JavaScript geladen.</p></div></div></div>
+            <div class='project-tile'><img src='../assets/image/project-robinmuff-school.png' alt='' /><div class='overlay'><div class='project-description'><h3 data-i18n="projects.school.title">robinmuff-school</h3><p data-i18n="projects.school.description">Auf dieser Seite findest du alle meine Schulprojekte. Es ist ein Archiv für jedes Projekt, das ich in der Schule gemacht habe.</p></div></div></div>
+          </div>
+          <a class="robinmuff-projects-more" data-i18n="projects.more" href="https://github.com/robinmuff">mehr sehen...</a>
+        </section>
+
+        <!--=============== EXPERIENCE ===============-->
+
+        <section class="content-card experience" id="experience">
+          <h1 class="robinmuff-experience-title" data-i18n="experience.title">Erfahrung</h1>
+          <div class="timeline">
+            <div class="timeline-items robinmuff-experience">
+              <div class='timeline-item'><div class='timeline-date' data-i18n="experience.job1.date">Dez. 2024 - jetzt</div><div class='timeline-content'><h3 data-i18n="experience.job1.title">Softwareentwickler</h3><p data-i18n="experience.job1.description">Softwareentwickler bei xappido AG. Entwicklung von Software für Kunden der xappido AG.</p></div></div>
+              <div class='timeline-item'><div class='timeline-date' data-i18n="experience.job2.date">Aug. 2022 - Nov. 2024</div><div class='timeline-content'><h3 data-i18n="experience.job2.title">Prozess- und Systemmanager</h3><p data-i18n="experience.job2.description">Prozess- und Systemmanager bei Schindler Aufzüge AG. Verantwortlich für die Entwicklung und Wartung der internen Anwendungen.</p></div></div>
+              <div class='timeline-item'><div class='timeline-date' data-i18n="experience.job3.date">Aug. 2018 - Jul. 2022</div><div class='timeline-content'><h3 data-i18n="experience.job3.title">Lehre</h3><p data-i18n="experience.job3.description">Lehre als Informatiker EFZ mit Fachrichtung Applikationsentwicklung bei Schindler Aufzüge AG</p></div></div>
+              <div class='timeline-item'><div class='timeline-date' data-i18n="experience.job4.date">Aug. 2009 - Jul. 2018</div><div class='timeline-content'><h3 data-i18n="experience.job4.title">Schule</h3><p data-i18n="experience.job4.description">Primarschule in Eich, Sekundarschule in Sempach</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!--=============== CONTACT ===============-->
+
+        <section class="content-card contact" id="contact">
+          <h1 class="robinmuff-contact-title" data-i18n="contact.title">Kontakt</h1>
+          <form class="form" id="form" action="https://getform.io/f/c6a6c15c-044f-496c-95f9-9456c0a2647f" method="post">
+            <div class="input-box">
+              <input type="text" class="text-input" name="name" placeholder="Name" data-i18n-placeholder="contact.name" />
+            </div>
+            <div class="input-box">
+              <input type="email" class="text-input" name="email" id="email" placeholder="Email" data-i18n-placeholder="contact.email" />
+            </div>
+            <div class="input-box">
+              <input type="subject" class="text-input" name="subject" id="subject" placeholder="Betreff" data-i18n-placeholder="contact.subject" />
+            </div>
+            <div class="input-box">
+              <textarea name="text" class="message" placeholder="Nachricht..." data-i18n-placeholder="contact.message"></textarea>
+            </div>
+            <div class="input-box">
+              <input type="submit" class="submit-btn" id="submit" value="Absenden" data-i18n-value="contact.submit" />
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/translations.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/blur.js"></script>
+</body>
+
+</html>
